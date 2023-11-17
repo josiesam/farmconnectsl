@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     # Third parties
     'compressor',
+
+
+    "account",
     
 ]
 
