@@ -1,0 +1,14 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Django
+
+# Node
+node_modules/
+
+
+# Virtual environment
+venv/
