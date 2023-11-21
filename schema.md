@@ -11,6 +11,8 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     location = models.CharField(max_length=100, blank=True)
+    headshot = models.ImageField(upload_to='userprofile/headshot', blank=True, null=True)
+
     is_farmer = models.BooleanField(default=False)
     is_buyer = models.BooleanField(default=False)
 
