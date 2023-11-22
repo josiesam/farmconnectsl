@@ -53,14 +53,14 @@ class LoginView(View):
 
 class SignUpView(View):
     def get(self, *args, **kwargs):
-        form = SignForm
+        form = SignUpForm()
         context = {'form': form}
         return render(self.request, 'account/signup.html')
 
     def post(self, *args, **kwargs):
         context = {}
         data = self.request.POST.copy()
-        form = SignupForm(data)
+        form = SignUpForm(data)
         if form.is_valid():
             user = form.save()
             login(self.request, user)
@@ -77,6 +77,6 @@ class LogoutView(View):
     
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
-            logout(request)
+            logout(self.request)
         return redirect('home')
 
