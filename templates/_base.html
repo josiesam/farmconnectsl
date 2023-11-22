@@ -11,11 +11,11 @@
 
     {% endblock %}
     {% block pagetitle %}
-      <title>Django + Tailwind CSS + Flowbite</title>
+      <title>Farm Connect</title>
     {% endblock %}
 
     {% compress css %}
-    <link rel="stylesheet" href="{% static 'src/output.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     {% endcompress %}
   </head>
 
@@ -27,10 +27,10 @@
     </div>
 
     {% compress js %}
-    {% block globalscripts %}
-    {% endblock %}
-    {% block scripts %}
-    {% endblock %}
+      {% block globalscripts %}
+      {% endblock %}
+      {% block scripts %}
+      {% endblock %}
     {% endcompress %}
   </body>
 </html>

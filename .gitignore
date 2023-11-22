@@ -5,6 +5,7 @@ __pycache__/
 *.pyd
 
 # Django
+static/CACHE/
 
 # Node
 node_modules/

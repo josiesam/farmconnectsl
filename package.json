@@ -1,5 +1,21 @@
 {
+  "name": "farmconnect",
+  "version": "1.0.0",
+  "description": "Empowering farmer through digital market access",
   "devDependencies": {
     "tailwindcss": "^3.3.5"
-  }
+  },
+  "scripts": {
+    "tailwindcss": "npx tailwindcss -i ./input.css -o ./static/css/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarmConnect-KYIC/web-app.git"
+  },
+  "author": "KYIC Hackathon 2023 - Team Kenema",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FarmConnect-KYIC/web-app/issues"
+  },
+  "homepage": "https://github.com/FarmConnect-KYIC/web-app#readme"
 }
