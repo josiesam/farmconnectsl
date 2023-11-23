@@ -7,5 +7,5 @@ class AboutView(View):
 
 class ContactView(View):
         def get(self, *args, **kwargs):
-             return render(self.requst, "core/about")
+             return render(self.request, "core/contact.html")
         

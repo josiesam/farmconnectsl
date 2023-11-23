@@ -50,12 +50,14 @@
               <stop offset="1" stop-color="#45B2FF" />
             </linearGradient>
           </defs>
-        </svg>Flowbite
+        </svg>FarmConnect
       </a>
-      <p class="my-6 text-gray-500 dark:text-gray-400">Open-source library of over 400+ web components and interactive elements built for better web.</p>
+      <p class="my-6 text-gray-500 dark:text-gray-400">
+        FarmConnect - Empowering Farmers through Digital Market Access
+      </p>
       <ul class="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
         <li>
-          <a href="#" class="mr-4 hover:underline md:mr-6">About</a>
+          <a href="{% url "about" %}" class="mr-4 hover:underline md:mr-6">About</a>
         </li>
         <li>
           <a href="#" class="mr-4 hover:underline md:mr-6">Team</a>
@@ -73,10 +75,10 @@
           <a href="#" class="mr-4 hover:underline md:mr-6">FAQs</a>
         </li>
         <li>
-          <a href="#" class="mr-4 hover:underline md:mr-6">Contact</a>
+          <a href="{% url "contact" %}" class="mr-4 hover:underline md:mr-6">Contact</a>
         </li>
       </ul>
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© <span id="year"></span> <a href="#" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© <span id="year"></span> <a href="#" class="hover:underline">FarmConnect™</a>. All Rights Reserved.</span>
       <script>
         document.getElementById("year").innerHTML = new Date().getFullYear();
         </script>
