@@ -5,8 +5,11 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    headshot = models.ImageField(upload_to='userprofile/headshot', blank=True, null=True)
+    headshot = models.ImageField(
+            upload_to='userprofile/headshot', 
+            blank=True, null=True,
+            default='/default_profile.png'
+            )
     bio = models.TextField(blank=True)
     locatiion = models.CharField(max_length=100, blank=True)
     is_farmer = models.BooleanField(default=False)
-    is_buyer = models.BooleanField(default=False)

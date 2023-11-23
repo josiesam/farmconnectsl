@@ -42,8 +42,7 @@ class LoginView(View):
             return redirect('home')
 
         else:
-            messages.add_message(self.request, messages.ERROR, 'Invalid Credential')
-
+            messages.error(self.request, 'Invalid credentials')
             form = LoginForm(self.request.POST)
             context.update({'form': form})
 
@@ -55,7 +54,7 @@ class SignUpView(View):
     def get(self, *args, **kwargs):
         form = SignUpForm()
         context = {'form': form}
-        return render(self.request, 'account/signup.html')
+        return render(self.request, 'account/signup.html', context)
 
     def post(self, *args, **kwargs):
         context = {}
@@ -69,7 +68,6 @@ class SignUpView(View):
         
         else:
             context.update({'form': form})
-            messages.error(self.request, str(form.errors))
             return render(self.request, 'account/signup.html', context)
 
     

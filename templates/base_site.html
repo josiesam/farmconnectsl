@@ -1,0 +1,12 @@
+{% extends "_base.html" %}
+
+{% block page %}
+    {% include "components/header.html" %}
+    <main>
+        {% include "components/message_toast.html" %}
+        <div class="px-4 sm:px-6 md:px-8 lg:px-10">
+            {% block content %}{% endblock content %}
+        </div>
+    </main>
+    {% include "components/footer.html" %}
+{% endblock page %}

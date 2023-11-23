@@ -2,7 +2,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,25 +12,26 @@
     {% endblock %}
     {% block pagetitle %}
       <title>Farm Connect</title>
-    {% endblock %}
+    {% endblock pagetitle %}
 
     {% compress css %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     {% endcompress %}
   </head>
 
-  <body class="bg-green-50">
-    <div class="container mx-auto mt-4">
-      {% block content %}
+  <body class="h-full">
+    <div class="container mx-auto mt-4 min-h-full grid grid-rows-[auto_1fr_auto]">
+      {% block page %}
 
-      {% endblock %}
+      {% endblock page %}
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
     {% compress js %}
       {% block globalscripts %}
-      {% endblock %}
+      {% endblock globalscripts %}
       {% block scripts %}
-      {% endblock %}
+      {% endblock scripts %}
     {% endcompress %}
   </body>
 </html>

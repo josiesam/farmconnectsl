@@ -1,58 +1,81 @@
-{% extends "_base.html" %}
+{% extends '_base.html' %}
 
 {% block pagetitle %}
-<title>Login </title>
+  <title>Login</title>
 {% endblock %}
 
-
-{% block content %}
-<section class="bg-gray-50 dark:bg-gray-900">
-  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+{% block page %}
+  <section class="bg-gray-50 dark:bg-gray-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-          <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
-          Flowbite    
+        <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
+        FarmConnect
       </a>
       <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                  Create and account
-              </h1>
-              <form class="space-y-4 md:space-y-6" method="post">
-                  <div>
-                      <label for="{{form.username.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                      {{ form.username }}
-                  </div>
-                  <div>
-                      <label for="{{form.first_name.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                      {{ form.first_name }}
-                  </div>
-                  <div>
-                      <label for="{{form.last_name.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                      {{ form.last_name }}
-                  </div>
-                  <div>
-                      <label for="{{form.email.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                      {{ form.email }}
-                  </div>
-                  <div>
-                      <label for="{{form.password1.id_for_label}}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                      {{form.password1}}
-                  </div>
-                  <div>
-                      <label for="{{form.password2.id_for_label}}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-                      {{form.password2}}
-                  
-                  </div>
-                  <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create an account</button>
-                  <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                      Already have an account? <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
-                  </p>
-              </form>
-          </div>
-      </div>
-  </div>
-</section>
-  
-  
-{% endblock %}
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <h1 class="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">Create an account</h1>
+          <form class="space-y-4 md:space-y-6" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="{{ form.username.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Username</label>
+                {% if form.username.errors %}
+                  <div class="text-xs font-normal flex items-center w-full max-w-xs p-2 text-red-500 bg-red-50 rounded-lg shadow dark:text-red-400 dark:bg-red-800">{{ form.username.errors }}</div>
+                {% endif %}
+                {{ form.username }}
+            </div>
+            <div>
+                <label for="{{ form.first_name.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
+                {% if form.first_name.errors %}
+                  <div class="text-xs font-normal flex items-center w-full max-w-xs p-1 text-red-500 bg-red-50 rounded-lg shadow dark:text-red-400 dark:bg-red-800">{{ form.first_name.errors }}</div>
+                {% endif %}
+                {{ form.first_name }}
+            </div>
+            <div>
+                <label for="{{ form.last_name.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+                {% if form.last_name.errors %}
+                  <div class="text-xs font-normal flex items-center w-full max-w-xs p-1 text-red-500 bg-red-50 rounded-lg shadow dark:text-red-400 dark:bg-red-800">{{ form.last_name.errors }}</div>
+                {% endif %}
+                {{ form.last_name }}
+            </div>
+            <div>
+                <label for="{{ form.email.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
+                {% if form.email.errors %}
+                  <div class="text-xs font-normal flex items-center w-full max-w-xs p-1 text-red-500 bg-red-50 rounded-lg shadow dark:text-red-400 dark:bg-red-800">{{ form.email.errors }}</div>
+                {% endif %}
+                {{ form.email }}
+            </div>
+            <div>
+                <label for="{{ form.password1.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                {% if form.password1.errors %}
+                  <div class="text-xs font-normal flex items-center w-full max-w-xs p-1 text-red-500 bg-red-50 rounded-lg shadow dark:text-red-400 dark:bg-red-800">{{ form.password1.errors }}</div>
+                {% endif %}
+                {{ form.password1 }}
+            </div>
+            <div>
+                <label for="{{ form.password2.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
+                {% if form.password2.errors %}
+                  <div class="text-xs font-normal flex items-center w-full max-w-xs p-1 text-red-500 bg-red-50 rounded-lg shadow dark:text-red-400 dark:bg-red-800">{{ form.password2.errors }}</div>
+                {% endif %}
+                {{ form.password2 }}
+              </div>
+              
+              <div class="flex items-center rounded">
+                {% if form.is_farmer.errors %}
+                  <div class="text-xs font-normal flex items-center w-full max-w-xs p-1 text-red-500 bg-red-50 rounded-lg shadow dark:text-red-400 dark:bg-red-800">{{ form.is_farmer.errors }}</div>
+                {% endif %}
+                {{ form.is_farmer }}
+                <label for="{{ form.is_farmer.id_for_label }}" class="w-full py-2 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Farmer</label>
+            </div>
 
+            <div class="text-center">
+              <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">SignUp</button>
+            </div>
+            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+              Already have an account? <a href="{% url 'account:login' %}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
