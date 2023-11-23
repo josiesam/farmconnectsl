@@ -12,4 +12,4 @@ def create_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
     """ Save the user profile whenever the user object is saved.  """
-    instance.profile.save()
+    instance.userprofile.save()

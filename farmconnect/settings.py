@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "marketinfo",
     "marketplace",
     "account",
+    'core'
     
 ]
 
