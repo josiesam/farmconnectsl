@@ -1,5 +1,33 @@
-{% extends "base_site.html" %}
+{% extends 'base_site.html' %}
 
 {% block content %}
-    <h1>Contact Page</h1>
-{% endblock content %}
+  <section>
+    <div class="pt-8 pb-4 lg:py-24">
+      <h1 class="mb-4 text-4xl font-bold text-gray-900 lg:font-extrabold lg:text-5xl lg:leading-none dark:text-white lg:text-center lg:mb-7">Contact Us</h1>
+      <p class="mb-6 text-lg font-normal text-gray-500 dark:text-gray-400 lg:text-center lg:text-xl">Let us know what you need and we will get back to you in no time</p>
+    </div>
+    <div class="px-4 mx-auto max-w-7xl lg:px-4 my-4">
+      <div class="p-4 mx-auto max-w-3xl rounded-lg border-gray-50 shadow-md dark:bg-gray-800 lg:p-8">
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-6">
+            <label for="{{ form.subject.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
+            {{ form.subject }}
+          </div>
+          <div class="mb-6">
+            <label for="{{ form.message.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Message</label>
+            {{ form.message }}
+          </div>
+          <p class="mb-6 text-sm text-gray-500">
+            By submitting this form you agree to our 
+            <a class="text-blue-600 dark:text-blue-500 hover:underline" href="#">Terms &amp; conditions</a> 
+            and our 
+            <a class="text-blue-600 dark:text-blue-500 hover:underline" href="#">Privacy Policy</a> 
+            which explains how we may collect, use and disclose your personal information including to third parties.
+          </p>
+          <button class="text-white font-medium rounded-lg text-base px-5 py-3 w-full sm:w-auto text-center bg-blue-700" type="submit"><span class="flex justify-center items-center">Send message</span></button>
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock %}

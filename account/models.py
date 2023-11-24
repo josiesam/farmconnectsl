@@ -13,3 +13,6 @@ class UserProfile(models.Model):
     bio = models.TextField(blank=True)
     locatiion = models.CharField(max_length=100, blank=True)
     is_farmer = models.BooleanField(default=False)
+
+    def full_name(self):
+        return f'{self.user.first_name} {self.user.last_name}'

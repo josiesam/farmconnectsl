@@ -10,9 +10,11 @@
     {% block pagemeta %}
 
     {% endblock %}
-    {% block pagetitle %}
-      <title>Farm Connect</title>
-    {% endblock pagetitle %}
+    <title>
+        {% block pagetitle %}
+        Farm Connect
+        {% endblock pagetitle %}
+      </title>
 
     {% compress css %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />

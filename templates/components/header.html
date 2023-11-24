@@ -9,7 +9,7 @@
                 {% if request.user.is_authenticated %}
                 {% with profile=request.user.userprofile.headshot %}
                 <button>
-                    <img src="{{profile.url}}" alt="Userprofile">
+                    <img class='w-6 h-6 rounded-full' src="{{profile.url}}" alt="Userprofile">
                 </button>
                 {% endwith %}
                 {% else %}
@@ -24,22 +24,22 @@
             <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                 <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                     <li>
-                        <a href="#" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Marketinfo</a>
+                        <a href="{% url "marketinfo:index" %}" class="{% if location == 'marketinfo' %}site_header__nav-active{% else %} site_header__nav{% endif %}" {% if location == 'marketinfo' %}aria-current="page"{% endif %} >Marketinfo</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Marketplace</a>
+                        <a href="{% url "marketplace:index" %}" class="{% if location == 'marketplace' %}site_header__nav-active{% else %} site_header__nav{% endif %}" {% if location == 'marketplace' %}aria-current="page"{% endif %}>Marketplace</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Event</a>
+                        <a href="{% url 'marketinfo:events' %}" class="{% if location == 'event' %}site_header__nav-active{% else %} site_header__nav{% endif %}" {% if location == 'event' %}aria-current="page"{% endif %}>Event</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Blog</a>
+                        <a href="{% url 'marketinfo:blogs' %}" class="{% if location == 'blog' %}site_header__nav-active{% else %} site_header__nav{% endif %}" {% if location == 'blog' %}aria-current="page"{% endif %}>Blog</a>
                     </li>
                     <li>
-                        <a href="{% url "about" %}" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                        <a href="{% url "about" %}" class="{% if location == 'about' %}site_header__nav-active{% else %} site_header__nav{% endif %}" {% if location == 'about' %}aria-current="page"{% endif %} >About</a>
                     </li>
                     <li>
-                        <a href="{% url "contact" %}" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                        <a href="{% url "contact" %}" class="{% if location == 'contact' %}site_header__nav-active{% else %} site_header__nav{% endif %}" {% if location == 'contact' %}aria-current="page"{% endif %}>Contact</a>
                     </li>
                 </ul>
             </div>

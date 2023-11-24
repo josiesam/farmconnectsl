@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+
+from .models import UserProfile
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
@@ -136,3 +138,15 @@ class SignUpForm(UserCreationForm):
                 'email', 'password1', 'password2', 
                 'is_farmer'
             )
+
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'password')
+
+class UserProfileEditForm(forms.ModelForm):
+    
+    class Meta:
+        model = UserProfile
+        fields = '__all__'

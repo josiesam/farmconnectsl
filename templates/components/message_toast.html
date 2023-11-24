@@ -1,62 +1,64 @@
 
+<div class="w-full flex items-center gap-y-1 flex-col">
 {% for message in messages %}
-    {% if message.tags == "info" %}
-        <div id="toast-default" class="flex items-center w-full max-w-xs p-4 text-blue-500 bg-blue-50 rounded-lg shadow dark:blue-gray-400 dark:bg-blue-800" role="alert">
+        {% if message.tags == "info" %}
+        <div id="{{message|slugify}}" class="flex items-center w-full max-w-xs p-4 text-blue-500 bg-blue-50 rounded-lg shadow dark:blue-gray-400 dark:bg-blue-800" role="alert">
             <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-sky-500 bg-sky-100 rounded-lg dark:bg-sky-800 dark:text-sky-200">
                 &#8505;
                 <span class="sr-only">Push Nofication</span>
             </div>
             <div class="ms-3 text-sm font-normal">{{ message }}</div>
-            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-default" aria-label="Close">
+            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#{{message|slugify}}" aria-label="Close">
                 <span class="sr-only">Close</span>
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                 </svg>
             </button>
         </div>
-    {% elif message.tags == "success" %}
-        <div id="toast-default" class="flex items-center w-full max-w-xs p-4 text-green-500 bg-green-50 rounded-lg shadow dark:text-green-400 dark:bg-green-800" role="alert">
+        {% elif message.tags == "success" %}
+        <div id="{{message|slugify}}" class="flex items-center w-full max-w-xs p-4 text-green-500 bg-green-50 rounded-lg shadow dark:text-green-400 dark:bg-green-800" role="alert">
             <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-emerald-500 bg-emerald-100 rounded-lg dark:bg-emerald-800 dark:text-emerald-200">
                 &#9989;
                 <span class="sr-only">Push Nofication</span>
             </div>
             <div class="ms-3 text-sm font-normal">{{ message }}</div>
-            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-default" aria-label="Close">
+            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#{{message|slugify}}" aria-label="Close">
                 <span class="sr-only">Close</span>
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                 </svg>
             </button>
         </div>
-    {% elif message.tags == "warning" %}
-        <div id="toast-default" class="flex items-center w-full max-w-xs p-4 text-amber-500 bg-amber-50 rounded-lg shadow dark:text-amber-400 dark:bg-amber-800" role="alert">
+        {% elif message.tags == "warning" %}
+        <div id="{{message|slugify}}" class="flex items-center w-full max-w-xs p-4 text-amber-500 bg-amber-50 rounded-lg shadow dark:text-amber-400 dark:bg-amber-800" role="alert">
             <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-yellow-500 bg-yellow-100 rounded-lg dark:bg-yellow-800 dark:text-yellow-200">
                 &#9888;
                 <span class="sr-only">Push Nofication</span>
             </div>
             <div class="ms-3 text-sm font-normal">{{ message }}</div>
-            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-default" aria-label="Close">
+            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#{{message|slugify}}" aria-label="Close">
                 <span class="sr-only">Close</span>
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                 </svg>
             </button>
         </div>
-    {% elif message.tags == "error" %}
-        <div id="toast-default" class="flex items-center w-full max-w-xs p-4 text-red-500 bg-red-50 rounded-lg shadow dark:text-red-400 dark:bg-red-800" role="alert">
+        {% elif message.tags == "error" %}
+        <div id="{{message|slugify}}" class="flex items-center w-full max-w-xs p-4 text-red-500 bg-red-50 rounded-lg shadow dark:text-red-400 dark:bg-red-800" role="alert">
             <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-rose-500 bg-rose-100 rounded-lg dark:bg-rose-800 dark:text-rose-200">
                 &#9888;
                 <span class="sr-only">Push Nofication</span>
             </div>
             <div class="ms-3 text-sm font-normal">{{ message }}</div>
-            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-default" aria-label="Close">
+            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#{{message|slugify}}" aria-label="Close">
                 <span class="sr-only">Close</span>
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                 </svg>
             </button>
         </div>
-    {% endif %}
-{% empty %}
-{% endfor %}
-
+        {% endif %}
+        {% empty %}
+        {% endfor %}
+</div>
+        

@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 from django.views import View
 
-from .forms import LoginForm, SignUpForm
+from .forms import LoginForm, SignUpForm, UserProfileEditForm, UserEditForm
 
 
 
@@ -78,3 +78,10 @@ class LogoutView(View):
             logout(self.request)
         return redirect('home')
 
+class UserProfileEditView(View):
+    context = {}
+    def get(self, *args, **kwargs):
+        form = UserEditForm()
+        self.context.update(form=form)
+
+        return render(self.request, 'account/user-profile-edit.html', self.context)
