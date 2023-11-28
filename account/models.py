@@ -11,7 +11,7 @@ class UserProfile(models.Model):
             default='/default_profile.png'
             )
     bio = models.TextField(blank=True)
-    locatiion = models.CharField(max_length=100, blank=True)
+    address = models.CharField(max_length=100, blank=True)
     is_farmer = models.BooleanField(default=False)
 
     def full_name(self):

@@ -21,7 +21,7 @@
     {% endcompress %}
   </head>
 
-  <body class="h-full">
+  <body class="h-full bg-gray-50 text-gray-800 dark:bg-gray-800 dark:text-gray-50">
     <div class="container mx-auto mt-4 min-h-full grid grid-rows-[auto_1fr_auto]">
       {% block page %}
 
@@ -30,10 +30,17 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
     {% compress js %}
+    
       {% block globalscripts %}
+      <script src="{% static 'js/dark-mode.js' %}"></script>
+      <script src="{% static 'js/mobile-nav.js' %}"></script>
+        
+        
       {% endblock globalscripts %}
+
       {% block scripts %}
       {% endblock scripts %}
+
     {% endcompress %}
   </body>
 </html>

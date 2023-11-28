@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm, PasswordResetForm
 
 from .models import UserProfile
 
@@ -143,10 +143,94 @@ class SignUpForm(UserCreationForm):
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password')
+        fields = ('username', 'first_name', 'last_name', 'email')
+        widgets = {
+            'username': forms.TextInput(attrs={
+                'class': '''
+                    shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg
+                    focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 
+                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500
+                '''             
+            }),
+            'first_name': forms.TextInput(attrs={
+                'class': '''
+                    shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg
+                    focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 
+                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500
+                '''
+            }),
+            'last_name': forms.TextInput(attrs={
+                'class': '''
+                    shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg
+                    focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 
+                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500
+                '''             
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': '''
+                    shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg
+                    focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 
+                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500
+                '''             
+            })
+        }
 
 class UserProfileEditForm(forms.ModelForm):
     
     class Meta:
         model = UserProfile
-        fields = '__all__'
+        fields = ('headshot', 'bio', 'address')
+        widgets = {
+            'address': forms.TextInput(attrs={
+                'class': '''
+                    shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg
+                    focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 
+                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500
+                '''             
+            }),
+
+        }
+
+
+class UserPasswordResetForm(PasswordResetForm):
+    pass
+
+class UserPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(
+        label='Current Password',
+        widget=forms.PasswordInput(attrs={
+            'class': '''
+                    shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg
+                    focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 
+                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500
+            '''
+        })
+    )
+    new_password1 = forms.CharField(
+        label='New Password',
+        widget=forms.PasswordInput(attrs={
+            'class': '''
+                    shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg
+                    focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 
+                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500
+            '''
+        })
+    )
+    new_password2 = forms.CharField(
+        label='Confirm Password',
+        widget=forms.PasswordInput(attrs={
+            'class': '''
+                    shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg
+                    focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 
+                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500
+            '''
+        })
+    )
