@@ -8,11 +8,10 @@ from .models import Product, Transaction
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'price',
+        fields = ['environment',
                   'available_quantity', 'seller']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-input'}),
-            'description': forms.Textarea(attrs={'class': 'form-input'}),
+            'environment': forms.Select(attrs={'class': 'form-input'}),
             'price': forms.NumberInput(attrs={'class': 'form-input'}),
             'available_quantity': forms.NumberInput(attrs={'class': 'form-input'}),
             'seller': forms.Select(attrs={'class': 'form-select'}),
