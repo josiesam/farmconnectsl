@@ -117,6 +117,56 @@ class MarketPriceDeleteView(DeleteView):
 
 # Repeat the above pattern for other models (MarketPrice, Event, Attendee, BlogPost, Comment, UserSubmittedArticle)
 
+class EventDetailView(DetailView):
+    model = Event
+    template_name = 'event/event_detail.html'
+    context_object_name = 'event'
+
+
+class EventCreateView(CreateView):
+    model = Event
+    template_name = 'event/event_form.html'
+    form_class = EventForm
+    success_url = reverse_lazy('event_list')
+
+
+class EventUpdateView(UpdateView):
+    model = Event
+    template_name = 'event/event_form.html'
+    form_class = EventForm
+    success_url = reverse_lazy('event_list')
+
+
+class EventDeleteView(DeleteView):
+    model = Event
+    template_name = 'event/event_confirm_delete.html'
+    form_class = EventForm
+    success_url = reverse_lazy('event_list')
+    context_object_name = 'event'
+
+
+class BlogPostView(CreateView):
+    model = BlogPost
+    template_name = 'blogpost/blogpost_form.html'
+    form_class = BlogPostForm
+    success_url = reverse_lazy('blogpost_list')
+
+
+class BlogPostView(UpdateView):
+    model = BlogPost
+    template_name = 'blogpost/blogpost_form.html'
+    form_class = BlogPostForm
+    success_url = reverse_lazy('blogpost_list')
+
+
+class BlogPostView(BlogPostView):
+    model = BlogPost
+    template_name = 'blogpost/blogpost_confirm_delete.html'
+    form_class = BlogPostForm
+    success_url = reverse_lazy('blogpost_list')
+
+
+
 
 class EventDetailView(DetailView):
     model = Event
