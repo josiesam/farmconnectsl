@@ -8,7 +8,7 @@ from .views import (
     # MarketPriceListView, MarketPriceDetailView, MarketPriceCreateView, MarketPriceUpdateView, MarketPriceDeleteView,
     # EventListView, EventDetailView, EventCreateView, EventUpdateView, EventDeleteView,
     # AttendeeListView, AttendeeDetailView, AttendeeCreateView, AttendeeUpdateView, AttendeeDeleteView,
-    # BlogPostListView, BlogPostDetailView, BlogPostCreateView, BlogPostUpdateView, BlogPostDeleteView,
+    BlogPostListView, BlogPostDetailView, BlogPostCreateView, BlogPostUpdateView, BlogPostDeleteView,
     # CommentListView, CommentDetailView, CommentCreateView, CommentUpdateView, CommentDeleteView,
     # UserSubmittedArticleListView, UserSubmittedArticleDetailView, UserSubmittedArticleCreateView,
     # UserSubmittedArticleUpdateView, UserSubmittedArticleDeleteView,
@@ -29,6 +29,13 @@ urlpatterns = [
     path('crops/create/', CropCreateView.as_view(), name='crop_create'),
     path('crops/<slug:slug>/update/', CropUpdateView.as_view(), name='crop_update'),
     path('crops/<slug:slug>/delete/', CropDeleteView.as_view(), name='crop_delete'),
+
+    # BlogPost URLs
+    path('blogposts/', BlogPostListView.as_view(), name='blogpost_list'),
+    path('blogposts/<slug:slug>/', BlogPostDetailView.as_view(), name='blogpost_detail'),
+    path('blogposts/create/', BlogPostCreateView.as_view(), name='blogpost_create'),
+    path('blogposts/<slug:slug>/update/', BlogPostUpdateView.as_view(), name='blogpost_update'),
+    path('blogposts/<slug:slug>/delete/', BlogPostDeleteView.as_view(), name='blogpost_delete'),
 
     # Repeat the above pattern for other models (MarketPrice, Event, Attendee, BlogPost, Comment, UserSubmittedArticle)
 ]

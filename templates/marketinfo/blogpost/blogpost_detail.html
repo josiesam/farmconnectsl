@@ -1,6 +1,29 @@
-{% extends "base_site.html" %}
+{% extends 'base_site.html' %}
 
 {% block content %}
-
-
-{% endblock content %}
+<article class="w-full  max-w-none my-4 format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+    <header class="mb-4 lg:mb-6 not-format">
+        <address class="flex items-center mb-6 not-italic">
+            <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                <img class="mr-4 w-16 h-16 rounded-full" src="{{ blogpost.image.url }}" alt="blog banner">
+                <div>
+                    <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{{blogpost.author.full_name}}</a>
+                    {% comment %} <p class="text-base text-gray-500 dark:text-gray-400">Graphic Designer, educator & CEO Flowbite</p> {% endcomment %}
+                    {% with pub_date=blogpost.publication_date %}
+                    <p class="text-base text-gray-500 dark:text-gray-400"><time pubdate datetime="{{pub_date|date:"Y-m-d"}}" title="{{pub_date|date:"F jS, Y"}}">{{pub_date|date:"M j, Y"}}</time></p>
+                    {% endwith %}
+                </div>
+            </div>
+        </address>
+        <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{{blogpost.title}}</h1>
+    </header>
+    <p class="lead">
+        {{ blogpost.summary }}
+    </p>
+    <div id="blog-content mt-4">
+        <p>
+            {{blogpost.content}}
+        </p>
+    </div>
+</article>
+{% endblock %}

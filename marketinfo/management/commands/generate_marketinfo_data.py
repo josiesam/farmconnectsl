@@ -135,7 +135,7 @@ class Command(BaseCommand):
     def create_event_data(self, size):
         for _ in range(size):
             event = Event.objects.create(
-                title=fake.word(),
+                title=fake.sentence(nb_words=4),
                 description=fake.text(),
                 location=fake.word(),
                 date=fake.date_this_decade(),
@@ -157,8 +157,9 @@ class Command(BaseCommand):
     def create_blogpost_data(self, size):
         for _ in range(size):
             blog_post = BlogPost.objects.create(
-                title=fake.word(),
+                title=fake.sentence(nb_words=4),
                 content=fake.text(),
+                summary=fake.paragraph(),
                 author=random.choice(UserProfile.objects.all()),
                 publication_date=fake.date_this_decade(),
             )
@@ -171,7 +172,7 @@ class Command(BaseCommand):
             Comment.objects.create(
                 post=random.choice(BlogPost.objects.all()),
                 user=random.choice(UserProfile.objects.all()),
-                text=fake.text(),
+                text=fake.paragraph(),
                 date=fake.date_this_decade(),
             )
 

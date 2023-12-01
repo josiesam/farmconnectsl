@@ -1,68 +1,38 @@
 {% extends 'base_site.html' %}
 {% load static %}
 
-{% block pagetitle %}FarmConnect - AboutUs{% endblock pagetitle %}
+{% block pagetitle %}
+  FarmConnect - AboutUs
+{% endblock %}
 
 {% block content %}
-  <section>
-    <img class="w-full aspect-video" src="{% static 'img/project-banner1.jpeg' %}" alt="Project banner 1" />
-    <h1 class="mb-4 text-5xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">FarmConnect</h1>
+  <section class="mt-2">
+    <img class="w-full aspect-video rounded-md object-cover" src="{% static 'img/team1.jpg' %}" alt="Project banner 1" />
+    <h1 class="mb-4 text-5xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Nurturing Growth, Cultivating Change</h1>
     <div class="ml-6">
-        <p class="mb-6 text-lg font-normal text-gray-500 dark:text-gray-400">FarmConnect - Empowering Farmers through Digital Market Access</p>
+      <p class="mb-6 text-lg font-normal text-gray-500 dark:text-gray-400">Welcome to FarmConnect, where our journey is rooted in a shared vision of transforming agriculture through technology. Our story is one of passion, innovation, and a commitment to uplifting the backbone of Sierra Leone—the small-scale farmers.</p>
     </div>
   </section>
 
-  <section>
-    <h2 class="text-4xl font-bold text-gray-900 dark:text-white">Project Objective</h2>
-    <div class="ml-6">
-        <p class="py-3 text-gray-500 dark:text-gray-400">FarmConnect is a technology-driven initiative designed to enhance the well-being of small-scale farmers in Sierra Leone. The primary goal of this project is to empower farmers by providing real-time market price information and establishing a digital marketplace connecting them directly with buyers. The project aims to boost transparency, reduce intermediary costs, and enable farmers to make informed decisions about their agricultural produce</p>
+  <div class="grid gap-2">
+    <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"><span>Our Mission</span></h5>
+      <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">At FarmConnect, we believe in creating a sustainable and empowered future for farmers. Our mission is to bridge the gap between traditional farming practices and the limitless possibilities technology offers. We envision a thriving agricultural ecosystem that not only benefits farmers but also contributes to the overall growth of Sierra Leone.</p>
     </div>
-  </section>
 
-  <section>
-    <h2 class="text-4xl font-bold text-gray-900 dark:text-white">Challenges addressed</h2>
-    <div class="ml-6">
-        <p class="py-3 text-gray-500 dark:text-gray-500">Small-scale farmers in Sierra Leone encounter multiple challenges, including limited access to market data and dependency on intermediaries. FarmConnect seeks to address these challenges by unifying two essential components in one digital platform</p>
+    <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"><span>Why FarmConnect</span></h5>
+      <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Our platform is more than just a marketplace; it's a catalyst for change. By providing real-time market prices, eliminating intermediaries, and fostering a sense of community, we're empowering farmers to make informed decisions and take control of their agricultural journey.</p>
     </div>
-  </section>
 
-  <section>
-    <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Project Components</h2>
-    <div class="ml-6">
-        <ul class="space-y-4">
-            <li>
-                <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+    <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"><span>Our Values</span></h5>
+      <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Transparency, fairness, and community are at the core of everything we do. We value the hard work of farmers and strive to create a platform that respects and reflects their dedication. Through partnerships and ongoing enhancements, we are dedicated to ensuring that FarmConnect remains a dynamic force for positive change in Sierra Leone's agriculture.</p>
+    </div>
 
-              <svg class="w-7 h-7 inline mr-2 text-gray-500 dark:text-gray-400 mb-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1v14h16m0-9-3-2-3 5-3-2-3 4"/>
-              </svg>
-            <span>Market Price Information</span>
-          </h5>
-          <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">FarmConnect's Market Price Information System will deliver real-time market prices for various agricultural commodities. This valuable data will be accessible to farmers via an intuitive mobile application or web platform. The core objective of this component is to arm farmers with actionable information, enabling them to make well-informed decisions regarding when, where, and at what price to sell their crops</p>
-          <a href="{% url 'marketinfo:index' %}" class="inline-flex items-center text-blue-600 hover:underline">
-            Visit Page<svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778" />
-            </svg>
-          </a>
-        </div>
-    </li>
-    <li>
-        <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-            <svg class="w-7 h-7 inline mr-2 text-gray-500 dark:text-gray-400 mb-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"/>
-              </svg><span>Electronic Marketplace</span>
-          </h5>
-          <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">The second facet of FarmConnect will introduce an electronic marketplace where farmers can directly list their produce for sale, connecting them seamlessly with potential buyers. This digital platform will facilitate secure communication and negotiation between farmers and buyers, streamlining direct transactions. By eliminating intermediaries and reducing the time it takes to bring produce to market, this component strives to elevate farmers' income and profitability.</p>
-          <a href="{% url 'marketinfo:index' %}" class="inline-flex items-center text-blue-600 hover:underline">
-            Visit Page<svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778" />
-            </svg>
-        </a>
-        </div>
-      </li>
-    </ul>
-</div>
-</section>
+    <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"><span>Join Us in Cultivating Change</span></h5>
+      <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">FarmConnect is not just a platform; it's a movement. Whether you're a farmer looking for fair opportunities or a supporter of sustainable agriculture, join us in cultivating change. Together, we can shape a future where every farmer thrives, and agriculture becomes a beacon of growth for Sierra Leone.</p>
+    </div>
+  </div>
 {% endblock %}

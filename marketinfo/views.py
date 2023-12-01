@@ -18,25 +18,72 @@ class IndexView(View):
 class EventIndexView(View):
     def get(self, *args, **kwargs):
         context = {}
-        context.update(location='event')
-        return render(self.request, 'marketinfo/events.html', context)
+        event = Event.objects.all()
+        context.update(location='event', event=event)
+        return render(self.request, 'marketinfo/event/event_list.html', context)
 
 
 class BlogIndexView(View):
     def get(self, *args, **kwargs):
-        context = {}
-        context.update(location='blog')
-        return render(self.request, 'marketinfo/blogs.html', context)
+        return redirect('marketinfo:blogpost_list')
 
 
 class TipIndexView(View):
     def get(self, *args, **kwargs):
         context = {}
         context.update(location='marketinfo')
-
         return render(self.request, 'marketinfo/tips.html', context)
 
 # ========================= End Index View =========================
+
+# ========================= BlogPost CRUD View =========================
+class BlogPostCreateView(CreateView):
+    model = BlogPost
+    template_name = 'marketinfo/blogpost/blogpost_form.html'
+    form_class = BlogPostForm
+    success_url = reverse_lazy('blogpost_list')
+
+
+class BlogPostDeleteView(DeleteView):
+    model = BlogPost
+    template_name = 'blogpost/blogpost_confirm_delete.html'
+    success_url = reverse_lazy('blogpost_list')
+
+
+class BlogPostDetailView(DetailView):
+    model = BlogPost
+    template_name = 'marketinfo/blogpost/blogpost_detail.html'
+    context_object_name = 'blogpost'
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context =  super().get_context_data(**kwargs)
+        context.update(location='blog')
+        print(context)
+        return context
+
+
+class BlogPostListView(ListView):
+    model = BlogPost
+    template_name = 'marketinfo/blogpost/blogpost_list.html'
+    context_object_name = 'blogposts'
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context =  super().get_context_data(**kwargs)
+        context.update(location='blog')
+        return context
+
+
+class BlogPostUpdateView(UpdateView):
+    model = BlogPost
+    template_name = 'blogpost/blogpost_form.html'
+    form_class = BlogPostForm
+    success_url = reverse_lazy('blogpost_list')
+
+
+
+# ========================= End BlogPost CRUD View =========================
+
+
 
 
 # ========================= Crop CRUD View =========================
@@ -61,6 +108,7 @@ class CropDetailView(DetailView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context =  super().get_context_data(**kwargs)
         context.update(loaction='marketinfo')
+        return context
 
 
 class CropListView(ListView):

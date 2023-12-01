@@ -176,6 +176,7 @@ class Attendee(models.Model):
 class BlogPost(models.Model):
     slug = models.SlugField()
     title = models.CharField(max_length=255, unique=True)
+    summary = models.TextField()
     content = models.TextField()
     author = models.ForeignKey('account.UserProfile', on_delete=models.CASCADE)
     publication_date = models.DateTimeField(auto_now_add=True)

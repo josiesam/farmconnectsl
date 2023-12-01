@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Empowering farmer through digital market access",
   "devDependencies": {
+    "flowbite-typography": "^1.0.3",
     "tailwindcss": "^3.3.5"
   },
   "scripts": {

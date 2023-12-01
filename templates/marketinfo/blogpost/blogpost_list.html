@@ -1,87 +1,43 @@
-{% extends "base_site.html" %}
+{% extends 'base_site.html' %}
+{% load static %}
 
 {% block content %}
-
-<div id="blog" class="bg-gray-100 dark:bg-gray-900 px-4 xl:px-4 py-14">
-    <div class="mx-auto container">
-        <span role="contentinfo">
-        <h1 tabindex="0" class="focus:outline-none text-center text-3xl lg:text-5xl tracking-wider text-gray-900 dark:text-white">Latest from our Blog</h1>
-    </span>
-        <div tabindex="0"  aria-label="Group of cards" class="focus:outline-none mt-12 lg:mt-24">
-            <div  class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-8">
-                <div tabindex="0" class="focus:outline-none" aria-label="card 1">
-                    <img role="img" aria-label="code editor" tabindex="0" class="focus:outline-none w-full" src="https://cdn.tuk.dev/assets/components/111220/Blg-6/blog(1).png" alt="code editor" />
-                    <div class="py-4 px-8 w-full flex justify-between bg-indigo-700">
-                        <p  tabindex="0" class="focus:outline-none text-sm text-white font-semibold tracking-wide">Bruce Wayne</p>
-                        <p tabindex="0" class="focus:outline-none text-sm text-white font-semibold tracking-wide">13TH Oct, 2020</p>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 px-10 py-6 rounded-bl-3xl rounded-br-3xl">
-                        <h1 tabindex="0" class="focus:outline-none text-4xl text-gray-900 dark:text-white font-semibold tracking-wider">Transactions</h1>
-                        <p tabindex="0" class="focus:outline-none text-gray-700 dark:text-gray-200 text-base lg:text-lg lg:leading-8 tracking-wide mt-6 w-11/12">Find the latest events updates or create events, concerts, conferences, workshops, exhibitions, and cultural events in all cities of the US. The aim of Eventistan is to promote healthy and entertaining event.Find the latest events updates or create events, concerts, conferences, workshops, exhibitions, and cultural events in all cities of the US. The aim of Eventistan is to promote healthy and entertaining event.</p>
-                        <div class="w-full flex justify-end" >
-                            <button class="focus:outline-none focus:ring-2 ring-offset-2 focus:ring-gray-600 hover:opacity-75 mt-4 justify-end flex items-center cursor-pointer">
-                                <span class=" text-base tracking-wide text-indigo-700">Read more</span>
-                               <img class="ml-3 lg:ml-6" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/2-column-with-main-and-supporting-svg1.svg" alt="arrow"/>
-                            </button>
-                        </div>
-                        <div class="h-5 w-2"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
-                        <div tabindex="0" class="focus:outline-none " aria-label="card 2" >
-                            <img tabindex="0" role="img" aria-label="gaming" class="focus:outline-none w-full" src="https://cdn.tuk.dev/assets/components/111220/Blg-6/blog(2).png" alt="games" />
-                            <div class="py-2 px-4 w-full flex justify-between bg-indigo-700">
-                                <p tabindex="0" class="focus:outline-none  text-sm text-white font-semibold tracking-wide">Bruce Wayne</p>
-                                <p tabindex="0" class="focus:outline-none text-sm text-white font-semibold tracking-wide">13TH Oct, 2020</p>
-                            </div>
-                            <div class="bg-white dark:bg-gray-800 px-3 lg:px-6 py-4 rounded-bl-3xl rounded-br-3xl">
-                                <h1 tabindex="0" class="focus:outline-none text-lg text-gray-900 dark:text-white font-semibold tracking-wider">Transactions</h1>
-                                <p tabindex="0" class="focus:outline-none text-gray-700 dark:text-gray-200 text-sm lg:text-base lg:leading-8 pr-4 tracking-wide mt-2">Find the latest events updates or create events, concerts, conferences, workshops...</p>
-                            </div>
-                        </div>
-                        <div  tabindex="0" class="focus:outline-none" aria-label="card 3">
-                            <img tabindex="0" role="img" aria-label="gaming" class="focus:outline-none focus:outline-none w-full" src="https://cdn.tuk.dev/assets/components/111220/Blg-6/blog(3).png" alt="notes" />
-                            <div class="py-2 px-4 w-full flex justify-between bg-indigo-700">
-                                <p tabindex="0" class="focus:outline-none text-sm text-white font-semibold tracking-wide">Bruce Wayne</p>
-                                <p tabindex="0" class="focus:outline-none text-sm text-white font-semibold tracking-wide">13TH Oct, 2020</p>
-                            </div>
-                            <div class="bg-white dark:bg-gray-800 px-3 lg:px-6 py-4 rounded-bl-3xl rounded-br-3xl">
-                                <h1 tabindex="0" class="focus:outline-none text-lg text-gray-900 dark:text-white font-semibold tracking-wider">Transactions</h1>
-                                <p tabindex="0" class="focus:outline-none text-gray-700 dark:text-gray-200 text-sm lg:text-base lg:leading-8 pr-4 tracking-wide mt-2">Find the latest events updates or create events, concerts, conferences, workshops...</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-10 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
-                        <div tabindex="0" class="focus:outline-none " aria-label="card 4">
-                            <img tabindex="0" role="img" aria-label="laptop" class="focus:outline-none w-full" src="https://cdn.tuk.dev/assets/components/111220/Blg-6/blog(4).png" alt="laptop" />
-                            <div class="py-2 px-4 w-full flex justify-between bg-indigo-700">
-                                <p tabindex="0" class="focus:outline-none text-sm text-white font-semibold tracking-wide">Bruce Wayne</p>
-                                <p tabindex="0" class="focus:outline-none text-sm text-white font-semibold tracking-wide">13TH Oct, 2020</p>
-                            </div>
-                            <div class="bg-white dark:bg-gray-800 px-3 lg:px-6 py-4 rounded-bl-3xl rounded-br-3xl">
-                                <h1 tabindex="0" class="focus:outline-none text-lg text-gray-900 dark:text-white font-semibold tracking-wider">Transactions</h1>
-                                <p tabindex="0" class="focus:outline-none text-gray-700 dark:text-gray-200 text-sm lg:text-base lg:leading-8 pr-4 tracking-wide mt-2">Find the latest events updates or create events, concerts, conferences, workshops...</p>
-                            </div>
-                        </div>
-                        <div tabindex="0" class="focus:outline-none" aria-label="card 5">
-                            <img tabindex="0" role="img" aria-label="worker" class="focus:outline-none w-full" src="https://cdn.tuk.dev/assets/components/111220/Blg-6/blog(5).png" alt="worker" />
-                            <div class="py-2 px-4 w-full flex justify-between bg-indigo-700">
-                                <p tabindex="0" class="focus:outline-none text-sm text-white font-semibold tracking-wide">Bruce Wayne</p>
-                                <p tabindex="0" class="focus:outline-none text-sm text-white font-semibold tracking-wide">13TH Oct, 2020</p>
-                            </div>
-                            <div class="bg-white dark:bg-gray-800 px-3 lg:px-6 py-4 rounded-bl-3xl rounded-br-3xl">
-                                <h1 tabindex="0" class="focus:outline-none  text-lg text-gray-900 dark:text-white font-semibold tracking-wider">Transactions</h1>
-                                <p tabindex="0" class="focus:outline-none  text-gray-700 dark:text-gray-200 text-sm lg:text-base lg:leading-8 pr-4 tracking-wide mt-2">Find the latest events updates or create events, concerts, conferences, workshops...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- ====== Blog Section Start -->
+  <section class="py-10 bg-white dark:bg-gray-800">
+    <div>
+      <div class="flex flex-wrap justify-center -mx-4">
+        <div class="w-full px-4">
+          <div class="mx-auto mb-[60px] max-w-[510px] text-center lg:mb-20">
+            <span class="block mb-2 text-lg font-semibold text-primary">Our Blogs</span>
+            <h2 class="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px] dark:text-white">Our Recent News</h2>
+            <p class="text-base text-body-color dark:text-dark-6">There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form.</p>
+          </div>
         </div>
+      </div>
+
+      <div>
+        <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+
+        {% for blogpost in blogposts %}
+          <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a href="#"><img class="rounded-t-lg w-full" src="{{ blogpost.image.url}}" alt="blog banner" /></a>
+            <div class="p-5">
+              <a href="#"><h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ blogpost.title|title  }}</h5></a>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{blogpost.content|truncatechars:120}}</p>
+              <a href="{% url "marketinfo:blogpost_detail" blogpost.slug %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Read more<svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          {% empty %}
+          <h3 class="text-2xl font-medium text-center text-rose-400 dark:text-rose-200">No blog post available</h3>
+        {% endfor %}
     </div>
-</div>  
 
-
-{% endblock content %}
+      </div>
+    </div>
+  </section>
+  <!-- ====== Blog Section End -->
+{% endblock %}

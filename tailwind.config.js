@@ -32,6 +32,7 @@ module.exports = {
           forms: true,
           tooltips: true
       }),
+      require('flowbite-typography'),
     ],
 }
 
