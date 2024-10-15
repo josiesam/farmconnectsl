@@ -41,35 +41,36 @@ class Command(BaseCommand):
 
     def generate_dummy_data(self):
         # Clear existing data (optional)
-        Crop.objects.all().delete()
-        CropEnvironment.objects.all().delete()
-        CropEconomic.objects.all().delete()
-        MarketPrice.objects.all().delete()
-        Event.objects.all().delete()
-        Attendee.objects.all().delete()
-        BlogPost.objects.all().delete()
-        Comment.objects.all().delete()
-        UserSubmittedArticle.objects.all().delete()
+        # Crop.objects.all().delete()
+        # CropEnvironment.objects.all().delete()
+        # CropEconomic.objects.all().delete()
+        # MarketPrice.objects.all().delete()
+        # Event.objects.all().delete()
+        # Attendee.objects.all().delete()
+        # BlogPost.objects.all().delete()
+        # Comment.objects.all().delete()
+        # UserSubmittedArticle.objects.all().delete()
 
         # Generate dummy data
-        size = 10
-        self.create_crop_data(size)
+        size = 6
+        # self.create_crop_data(size)
         self.create_cropenvironment_data(size)
-        self.create_cropeconomic_data(size)
-        self.create_marketprice_data(size)
-        self.create_event_data(size)
-        self.create_attendee_data(size)
-        self.create_blogpost_data(size)
-        self.create_comment_data(size)
-        self.create_userarticle_data(size)
+        # self.create_cropeconomic_data(size)
+        # self.create_marketprice_data(size)
+        # self.create_event_data(size)
+        # self.create_attendee_data(size)
+        # self.create_blogpost_data(size)
+        # self.create_comment_data(size)
+        # self.create_userarticle_data(size)
 
         self.stdout.write(self.style.SUCCESS('Dummy data generation complete.'))
 
     # Create Crop
     def create_crop_data(self, size):
         for _ in range(size):
-             Crop.objects.create(
+             crop = Crop.objects.create(
                 crop_type=fake.word(),
+                summary=fake.paragraph(nb_sentences=5),
                 crop_variety=fake.word(),
                 planting_date=fake.date_this_decade(),
                 harvest_date=fake.date_this_year(),
@@ -82,8 +83,11 @@ class Command(BaseCommand):
                 disease_incidence=fake.word(),
                 tillage_practices=fake.word(),
                 irrigation_practices=fake.word(),
-                crop_rotation=fake.word(),
+                crop_rotation=fake.word()
             )
+
+             image_file = create_image_file('crop_image.jpg', 'image/jpeg')
+             crop.image.save('crop_image.jpg', File(image_file))
 
     # Create CropEnvironment
     def create_cropenvironment_data(self, size):
@@ -106,6 +110,7 @@ class Command(BaseCommand):
                 remote_sensing_indices_ndvi=fake.random_number(digits=2),
                 sensor_readings_light_intensity=fake.random_number(digits=2),
             )
+
 
         # Create CropEconomic
     def create_cropeconomic_data(self, size):
@@ -142,6 +147,8 @@ class Command(BaseCommand):
                 time=fake.time(),
                 registration_link=fake.url(),
             )
+            banner_file = create_image_file('event_banner.jpg', 'image/jpeg')
+            event.banner.save('event_banner.jpg', File(banner_file))
 
         # Create Attendee
     def create_attendee_data(self, size):
@@ -158,7 +165,7 @@ class Command(BaseCommand):
         for _ in range(size):
             blog_post = BlogPost.objects.create(
                 title=fake.sentence(nb_words=4),
-                content=fake.text(),
+                content='\n'.join(fake.texts(nb_texts=5)),
                 summary=fake.paragraph(),
                 author=random.choice(UserProfile.objects.all()),
                 publication_date=fake.date_this_decade(),
@@ -181,7 +188,7 @@ class Command(BaseCommand):
         for _ in range(size):
             UserSubmittedArticle.objects.create(
                 title=fake.word(),
-                content=fake.text(),
+                content='\n'.join(fake.text()),
                 author=random.choice(UserProfile.objects.all()),
                 submission_date=fake.date_this_decade(),
                 is_approved=fake.boolean(),

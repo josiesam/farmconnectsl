@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/FarmConnect-KYIC/web-app#readme",
   "dependencies": {
+    "apexcharts": "^3.44.0",
     "flowbite": "^2.2.0"
   }
 }

@@ -38,14 +38,12 @@ class Command(BaseCommand):
     def generate_dummy_data(self):
         # Clear existing data (optional)
         ContactUs.objects.all().delete()
-        Team.objects.all().delete()
         Affiliation.objects.all().delete()
         FAQ.objects.all().delete()
 
         # Generate dummy data
         for _ in range(10):  # Adjust the number of records as needed
             self.create_contact_us()
-            self.create_team()
             self.create_affiliation()
             self.create_faq()
 

@@ -1,8 +1,10 @@
+import uuid
 from django.db import models
 from django.core.exceptions import ValidationError
 from marketinfo.models import MarketPrice
 
 class Product(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4)
     crop = models.ForeignKey(
             'marketinfo.Crop', on_delete=models.CASCADE, 
             editable=False, blank=True
@@ -16,8 +18,10 @@ class Product(models.Model):
             editable=False,
             on_delete=models.CASCADE, 
             )
+    image = models.ImageField( upload_to='products')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     available_quantity = models.PositiveIntegerField()
+    advert = models.CharField(max_length=100, blank=True, null=True)
     seller = models.ForeignKey(
             'account.UserProfile', on_delete=models.CASCADE, 
             limit_choices_to={'is_farmer': True}
@@ -44,6 +48,7 @@ class Product(models.Model):
 
 
 class Transaction(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     buyer = models.ForeignKey('account.UserProfile', on_delete=models.CASCADE, related_name='buyer_transactions')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()

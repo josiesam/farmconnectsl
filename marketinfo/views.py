@@ -10,17 +10,12 @@ from django.urls import reverse_lazy
 # ========================= Index View =========================
 class IndexView(View):
     def get(self, *arg, **kwargs):
-        context = {}
-        context.update(location='marketinfo')
-        return render(self.request, 'marketinfo/index.html', context)
+        return redirect('marketinfo:crop_list')
 
 
 class EventIndexView(View):
     def get(self, *args, **kwargs):
-        context = {}
-        event = Event.objects.all()
-        context.update(location='event', event=event)
-        return render(self.request, 'marketinfo/event/event_list.html', context)
+        return redirect('marketinfo:event_list')
 
 
 class BlogIndexView(View):
@@ -69,7 +64,8 @@ class BlogPostListView(ListView):
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context =  super().get_context_data(**kwargs)
-        context.update(location='blog')
+        blogposts = BlogPost.objects.all()
+        context.update(location='blog', blogposts=blogposts)
         return context
 
 
@@ -107,7 +103,8 @@ class CropDetailView(DetailView):
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context =  super().get_context_data(**kwargs)
-        context.update(loaction='marketinfo')
+        crop = self.get_object()
+        context.update(location='marketinfo', fields=crop._meta.fields)
         return context
 
 
@@ -118,7 +115,8 @@ class CropListView(ListView):
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context =  super().get_context_data(**kwargs)
-        context.update(loaction='marketinfo')
+        context.update(location='marketinfo')
+        return context
 
 
 class CropUpdateView(UpdateView):
@@ -130,6 +128,60 @@ class CropUpdateView(UpdateView):
 
 
 # ========================= End Crop CRUD View =========================
+
+
+# ========================= Event CRUD View =========================
+class EventCreateView(CreateView):
+    model = Event
+    template_name = 'marketinfo/event/event_form.html'
+    form_class = EventForm
+    success_url = reverse_lazy('event_list')
+
+
+class EventDeleteView(DeleteView):
+    model = Event
+    template_name = 'marketinfo/event/event_confirm_delete.html'
+    success_url = reverse_lazy('event_list')
+
+
+class EventDetailView(DetailView):
+    model = Event
+    template_name = 'marketinfo/event/event_detail.html'
+    context_object_name = 'event'
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context =  super().get_context_data(**kwargs)
+        context.update(location='blog')
+        print(context)
+        return context
+
+
+class EventListView(ListView):
+    model = BlogPost
+    template_name = 'marketinfo/event/event_list.html'
+    context_object_name = 'events'
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context =  super().get_context_data(**kwargs)
+        events = Event.objects.all()
+        context.update(location='event', events=events)
+        return context
+
+
+class EventUpdateView(UpdateView):
+    model = Event
+    template_name = 'marketinfo/event/event_form.html'
+    form_class = EventForm
+    success_url = reverse_lazy('event_list')
+
+
+
+# ========================= End Event CRUD View =========================
+
+
+
+
+
 
 
 class MarketpriceListView(ListView):
@@ -165,101 +217,3 @@ class MarketPriceDeleteView(DeleteView):
 
 # Repeat the above pattern for other models (MarketPrice, Event, Attendee, BlogPost, Comment, UserSubmittedArticle)
 
-class EventDetailView(DetailView):
-    model = Event
-    template_name = 'event/event_detail.html'
-    context_object_name = 'event'
-
-
-class EventCreateView(CreateView):
-    model = Event
-    template_name = 'event/event_form.html'
-    form_class = EventForm
-    success_url = reverse_lazy('event_list')
-
-
-class EventUpdateView(UpdateView):
-    model = Event
-    template_name = 'event/event_form.html'
-    form_class = EventForm
-    success_url = reverse_lazy('event_list')
-
-
-class EventDeleteView(DeleteView):
-    model = Event
-    template_name = 'event/event_confirm_delete.html'
-    form_class = EventForm
-    success_url = reverse_lazy('event_list')
-    context_object_name = 'event'
-
-
-class BlogPostView(CreateView):
-    model = BlogPost
-    template_name = 'blogpost/blogpost_form.html'
-    form_class = BlogPostForm
-    success_url = reverse_lazy('blogpost_list')
-
-
-class BlogPostView(UpdateView):
-    model = BlogPost
-    template_name = 'blogpost/blogpost_form.html'
-    form_class = BlogPostForm
-    success_url = reverse_lazy('blogpost_list')
-
-
-class BlogPostView(BlogPostView):
-    model = BlogPost
-    template_name = 'blogpost/blogpost_confirm_delete.html'
-    form_class = BlogPostForm
-    success_url = reverse_lazy('blogpost_list')
-
-
-
-
-class EventDetailView(DetailView):
-    model = Event
-    template_name = 'event/event_detail.html'
-    context_object_name = 'event'
-
-
-class EventCreateView(CreateView):
-    model = Event
-    template_name = 'event/event_form.html'
-    form_class = EventForm
-    success_url = reverse_lazy('event_list')
-
-
-class EventUpdateView(UpdateView):
-    model = Event
-    template_name = 'event/event_form.html'
-    form_class = EventForm
-    success_url = reverse_lazy('event_list')
-
-
-class EventDeleteView(DeleteView):
-    model = Event
-    template_name = 'event/event_confirm_delete.html'
-    form_class = EventForm
-    success_url = reverse_lazy('event_list')
-    context_object_name = 'event'
-
-
-class BlogPostView(CreateView):
-    model = BlogPost
-    template_name = 'blogpost/blogpost_form.html'
-    form_class = BlogPostForm
-    success_url = reverse_lazy('blogpost_list')
-
-
-class BlogPostView(UpdateView):
-    model = BlogPost
-    template_name = 'blogpost/blogpost_form.html'
-    form_class = BlogPostForm
-    success_url = reverse_lazy('blogpost_list')
-
-
-class BlogPostView(BlogPostView):
-    model = BlogPost
-    template_name = 'blogpost/blogpost_confirm_delete.html'
-    form_class = BlogPostForm
-    success_url = reverse_lazy('blogpost_list')

@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.views import View
 
 from .forms import ContactUsForm
+from .models import Team, Affiliation, FAQ
 
 
 class HomeView(View):
@@ -50,18 +51,21 @@ class ContactView(View):
 class TeamView(View):
     def get(self, *args, **kwargs):
         context = {}
-        context.update(location='about')
+        team = Team.objects.all()
+        context.update(location='about', team=team)
         return render(self.request, "core/team.html", context)
     
 class AffiliationView(View):
     def get(self, *args, **kwargs):
         context = {}
-        context.update(location='about')
+        affiliates = Affiliation.objects.all()
+        context.update(location='about', affiliates=affiliates)
 
         return render(self.request, "core/affiliation.html", context)
     
 class FAQView(View):
     def get(self, *args, **kwargs):
         context = {}
-
+        faqs = FAQ.objects.all()[:10]
+        context.update(faqs=faqs)
         return render(self.request, 'core/faq.html', context)

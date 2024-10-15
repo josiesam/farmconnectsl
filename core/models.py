@@ -8,14 +8,19 @@ class ContactUs(models.Model):
 class Team(models.Model):
     name = models.CharField(max_length=255)
     profile = models.ImageField(upload_to='team/profile')
-    bio = models.CharField(max_length=100)
+    bio = models.TextField()
     organization = models.CharField(max_length=2000) 
     role = models.CharField(max_length=2000)  
+    
+    def __str__(self):
+        return f'{self.name}'
 
 class Affiliation(models.Model):
     name = models.CharField(max_length=255)
     bio = models.CharField(max_length=100)
     logo = models.ImageField(upload_to='affiliation/logo')
+    def __str__(self):
+        return f'{self.name}'
 
 class FAQ(models.Model):
     topic = models.CharField(max_length=100)
@@ -25,3 +30,4 @@ class FAQ(models.Model):
     class Meta:
         verbose_name = "FAQ"
         verbose_name_plural = "FAQs"
+    

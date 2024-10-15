@@ -10,11 +10,13 @@ from django.db import models
 
 
 class Crop(models.Model):
-    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    slug = models.SlugField(editable=False)
     crop_type = models.CharField(
         max_length=255, help_text="The specific type of crop being cultivated (e.g., wheat, corn, soybeans).")
     crop_variety = models.CharField(
         max_length=255, help_text="The specific variety or cultivar of the crop.")
+    summary = models.TextField()
+    image = models.ImageField( upload_to='crop')
     planting_date = models.DateField(
         help_text="The date when the crop was planted.")
     harvest_date = models.DateField(
@@ -38,6 +40,14 @@ class Crop(models.Model):
         max_length=255, help_text="Frequency and amount of irrigation.", blank=True, null=True)
     crop_rotation = models.CharField(
         max_length=255, help_text="Information about the rotation of crops in the field.", blank=True, null=True)
+
+    class Meta:
+        unique_together = ('crop_type', 'crop_variety')
+
+    def save(self, *args, **kwargs):
+        self.slug = f'{slugify(self.crop_type)}_{slugify(self.crop_variety)}'
+
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.crop_type}: {self.crop_variety}"
@@ -146,6 +156,7 @@ class MarketPrice(models.Model):
 class Event(models.Model):
     slug = models.SlugField()
     title = models.CharField(max_length=255, unique=True)
+    banner = models.ImageField( upload_to='event/banner')
     description = models.TextField()
     location = models.CharField(max_length=255)
     date = models.DateField()

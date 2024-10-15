@@ -4,7 +4,7 @@ from .models import Crop, CropEnvironment, CropEconomic, MarketPrice, Event, Att
 
 @admin.register(Crop)
 class CropAdmin(admin.ModelAdmin):
-    list_display = ('crop_type', 'planting_date', 'harvest_date', 'yield_amount')
+    list_display = ('crop_type', 'crop_variety', 'planting_date', 'harvest_date', 'yield_amount')
     list_filter = ('crop_type', 'planting_date', 'harvest_date')
     search_fields = ('crop_type', 'crop_variety', 'pest_incidence', 'disease_incidence')
 
